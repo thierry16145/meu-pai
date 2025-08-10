@@ -2,138 +2,109 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Feliz Dia dos Pais - Pai</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Feliz Dia dos Pais</title>
   <style>
-    /* Fundo animado */
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
-      background-size: 600% 600%;
-      animation: backgroundAnimation 20s ease infinite;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-      overflow-x: hidden;
+      background: url('background.jpg') center/cover no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      overflow: hidden;
     }
-
-    @keyframes backgroundAnimation {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .container {
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
-      animation: fadeInUp 2s ease forwards;
       opacity: 0;
+      animation: fadeIn 2s ease-out forwards;
     }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
-
     h1 {
       font-size: 3.5em;
-      color: #f9d342;
-      margin-bottom: 0.5em;
-      animation: zoomIn 2s ease-in-out;
+      margin: 0.5em 0;
+      animation: zoomIn 1.5s ease-in;
     }
-
     @keyframes zoomIn {
-      from {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
-
-    h2 {
-      font-size: 2em;
-      margin-bottom: 1em;
+    .heart {
+      font-size: 4em;
+      color: #ff5555;
+      animation: beat 1s infinite alternate;
     }
-
+    @keyframes beat {
+      to { transform: scale(1.3); }
+    }
     p {
       font-size: 1.2em;
       max-width: 600px;
       line-height: 1.6;
+      margin: 1em 0;
     }
-
-    .heart {
-      font-size: 4em;
-      color: red;
-      animation: beat 1s infinite alternate;
+    .flowers {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      gap: 20px;
+      animation: grow 3s ease-out forwards;
+      transform: scaleY(0);
+      transform-origin: bottom;
     }
-
-    @keyframes beat {
-      from { transform: scale(1); }
-      to { transform: scale(1.3); }
+    .flowers .stem {
+      width: 10px;
+      height: 100px;
+      background: #76b947;
     }
-
+    .flowers .bloom {
+      width: 40px;
+      height: 40px;
+      background: yellow;
+      border-radius: 50%;
+      margin-bottom: -20px;
+    }
+    @keyframes grow {
+      to { transform: scaleY(1); }
+    }
     .btn {
       margin-top: 2em;
       padding: 12px 25px;
       font-size: 1em;
-      background-color: #f9d342;
-      color: #222;
+      background: #f9d342;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.3s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-
-    .btn:hover {
-      background-color: #fff78a;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8em;
-      color: #ccc;
-    }
+    .btn:hover { background: #fff78a; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="overlay">
     <div class="heart">❤️</div>
     <h1>Feliz Dia dos Pais!</h1>
-    <h2>Para o melhor de todos: <strong>Pai</strong></h2>
     <p>
-      Hoje é um dia especial para homenagear aquele que sempre esteve ao meu lado. <br />
-      Pai, você é meu herói, meu exemplo e meu porto seguro. <br />
-      Obrigado por cada ensinamento, abraço e conselho. <br />
-      Te amo mais do que palavras podem dizer! ❤️
+      Hoje celebramos você, meu querido Pai, por todo amor, proteção e sabedoria que sempre me deu. Que sua vida continue repleta de alegrias e conquistas ao seu lado.
+      Obrigado por estar sempre presente. Te amo infinitamente!
     </p>
-    <button class="btn" onclick="mostrarMensagem()">Clique para uma surpresa</button>
+    <button class="btn" onclick="alert('Pai, você é meu herói! Feliz Dia dos Pais!')">
+      Clique para uma surpresa
+    </button>
   </div>
-
-  <footer>
-    Criado com amor 💙 | Dia dos Pais 2025
-  </footer>
-
-  <script>
-    function mostrarMensagem() {
-      alert("Você é insubstituível, Pai. Obrigado por tudo. Te amo muito! 💙");
-    }
-  </script>
+  <div class="flowers">
+    <div class="stem"><div class="bloom"></div></div>
+    <div class="stem"><div class="bloom"></div></div>
+    <div class="stem"><div class="bloom"></div></div>
+  </div>
 </body>
 </html>
